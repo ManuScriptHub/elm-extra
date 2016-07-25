@@ -47,15 +47,17 @@ roundedRect pos size cornerRadius styleString =
 --         Svg.svg [ viewBox (join " " <| map toString viewRect) ] content
 --
 --
--- makeText : String -> Vec2 -> Float -> String -> Svg a
--- makeText str pos textHeight textStyle =
---     text'
---         [ SA.x (toString pos.x)
---         , SA.y (toString pos.y)
---         , SA.fontSize (toString textHeight)
---         , SA.style textStyle
---         ]
---         [ Svg.text str ]
+
+
+makeText : String -> Vec2 -> Float -> String -> Svg a
+makeText str pos textHeight textStyle =
+    text'
+        [ SA.x (toString <| getX pos)
+        , SA.y (toString <| getY pos)
+        , SA.fontSize (toString textHeight)
+        , SA.style textStyle
+        ]
+        [ Svg.text str ]
 
 
 translate : Vec2 -> Svg.Attribute b
